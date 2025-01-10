@@ -1,0 +1,1790 @@
+#define _CRT_SECURE_NO_WARNINGS 1 
+//https://www.nowcoder.com/exam/oj?page=1&tab=%E8%AF%AD%E6%B3%95%E7%AF%87&topicId=290
+//第92题
+//变种水仙花数-Lily Number
+//把任意的数字,从中间拆分成两个数字,比如1461可以拆分成(1和461),(14和61),(146和1)
+//如果所有拆分后的乘积之和等于自身,则是一个Lily Number。
+//例如:
+//655 = 6 * 55 + 65 * 5
+//1461 = 1 * 461 + 14 * 61 + 146 * 1
+//求出5位数中的所有Lily Number。
+//#include <stdio.h>
+//void is_bian(int i) 
+//{
+//    if (i == (i / 10000) * (i % 10000) + (i / 1000) * (i % 1000) + (i / 100) * (i % 100) + (i / 10) * (i % 10)) 
+//    {
+//        printf("%d ", i);
+//    }
+//}
+//int main() 
+//{
+//    int i = 0;
+//    for (i = 10000; i <= 99999; i++) {
+//        is_bian(i);
+//    }
+//    return 0;
+//}
+
+
+//第93题
+//描述
+//公务员面试现场打分。
+//有7位考官,从键盘输入若干组成绩,每组7个分数(百分制),去掉一个最高分和一个最低分,输出每组的平均成绩。
+//(注:本题有多组输入)
+//输入描述:
+//每一行,输入7个整数(0~100),代表7个成绩,用空格分隔。
+//输出描述:
+//每一行,输出去掉最高分和最低分的平均成绩,小数点后保留2位,每行输出后换行。
+//#include <stdio.h>
+//float average(int* arr, int sz) {
+//    arr[0] = 0;
+//    arr[6] = 0;
+//    int j = 0;
+//    float sum = 0;
+//    for (j = 0; j < sz; j++) {
+//        sum = sum + arr[j];
+//    }
+//    sum = sum / 5.0;
+//    return sum;
+//}
+//void sort(int* arr, int sz) {
+//    int i = 0;
+//    int j = 0;
+//    for (i = 0; i < sz - 1; i++) {
+//        for (j = 0; j < sz - 1 - i; j++) {
+//            if (arr[j] > arr[j + 1]) {
+//                arr[j] = arr[j + 1] + arr[j];
+//                arr[j + 1] = arr[j] - arr[j + 1];
+//                arr[j] = arr[j] - arr[j + 1];
+//            }
+//        }
+//    }
+//}
+//int main() {
+//    int arr[7] = { 0 };
+//    int i = 0;
+//    while (scanf("%d%d%d%d%d%d%d",&arr[0],&arr[1],&arr[2],&arr[3],&arr[4],&arr[5],&arr[6]) != EOF) 
+//    {
+//        int sz = sizeof(arr) / sizeof(arr[0]);
+//        sort(arr, sz);
+//        float ret = average(arr, sz);
+//        printf("%.2f\n", ret);
+//    }
+//    return 0;
+//}
+
+
+//第94题
+//描述
+//将一个四位数反向输出
+//输入描述:
+//一行,输入一个整数n(1000<=n<=9999)
+//输出描述:
+//针对每组输入,反向输出对应四位数
+//#include <stdio.h>
+//void four(int n)
+//{
+//    while (n)
+//    {
+//        printf("%d", n % 10);
+//        n = n / 10;
+//    }
+//}
+//int main()
+//{
+//    int num = 0;
+//    scanf("%d", &num);
+//    four(num);
+//    return 0;
+//}
+
+
+//第95题
+//描述
+//小乐乐在课上学习了二进制八进制与十六进制后,对进制转换产生了浓厚的兴趣。
+//因为他的幸运数字是6,所以他想知道一个数表示为六进制后的结果。
+//请你帮助他解决这个问题。
+//输入描述:
+//输入一个正整数n(1≤n≤109)
+//输出描述:
+//输出一行,为正整数n表示为六进制的结果
+//#include <stdio.h>
+//void six(int n)
+//{
+//    if (n > 5)
+//    {
+//        six(n / 6);
+//    }
+//    printf("%d", n % 6);
+//}
+//int main() {
+//    int n = 0;
+//    scanf("%d", &n);
+//    six(n);
+//    return 0;
+//}
+
+
+//第96题
+//描述
+//国王将金币作为工资, 发放给忠诚的骑士。
+//第一天, 骑士收到一枚金币; 之后两天(第二天和第三天), 每天收到两枚金币
+//之后三天(第四、五、六天), 每天收到三枚金币
+//之后四天(第七、八、九、十天), 每天收到四枚金币……;
+//这种工资发放模式会一直这样延续下去
+//当连续N天每天收到N枚金币后,骑士会在之后的连续N+1天里,每天收到N+1枚金币。
+//请计算在前K天里,骑士一共获得了多少金币。
+//输入描述:
+//输入只有1行,包含一个正整数K,表示发放金币的天数。
+//输出描述:
+//输出只有1行,包含一个正整数,即骑士收到的金币数。
+//#include <stdio.h>
+//void money(int num)
+//{
+//    int i = 1;
+//    int sum = 0;
+//    int n = 1;
+//    int m = 0;
+//    while (num > 0)
+//    {
+//        n = i;
+//        while (n)
+//        {
+//            sum = i + sum;
+//            n--;
+//            num--;
+//            if (num == 0)
+//            {
+//                break;
+//            }
+//        }
+//        i++;
+//    }
+//    printf("%d\n", sum);
+//}
+//int main() {
+//    int n = 0;
+//    scanf("%d", &n);
+//    money(n);
+//    return 0;
+//}
+
+
+//#include <stdio.h>
+//#include<math.h>
+//int print(int n,int* arr)
+//{
+//    int temp = n;
+//    int count = 0;
+//    while (n > 0)
+//    {
+//        n = n / 10;
+//        count++;
+//    }
+//    int temp1 = count;
+//    while (temp > 0)
+//    {
+//        arr[count - 1] = temp % 10;
+//        count--;
+//        temp = temp / 10;
+//    }
+//    return temp1;
+//}
+//
+//int back_num(int* arr,int count)
+//{
+//    int left = 0;
+//    int average = count / 2;
+//    count = count - 1;
+//    int flag = 0;
+//    while (flag == 0)
+//    {
+//        if (arr[left] == arr[count])
+//        {
+//            left++;
+//            count--;
+//        }
+//        if (left < 0 || count < 0)
+//        {
+//            flag = 2;
+//        }
+//        else
+//        {
+//            flag = 1;
+//        }
+//    }
+//    if (flag == 0||flag == 2)
+//    {
+//        return 1;
+//    }
+//}
+//int main() {
+//    int num = 0;
+//    scanf("%d", &num);
+//    int j = 0;
+//    for (j = 1;j <= num;j++)
+//    {
+//        int arr[10] = { 0 };
+//        int count = print(j, arr);
+//        int ret = back_num(arr, count);
+//        if (ret == 1)
+//        {
+//            int i = 0;
+//            int temp = 0;
+//            int temp1 = count;
+//            for (i = 0;i < temp1;i++)
+//            {
+//                temp = pow(10, i) * arr[count-1] + temp;
+//                count--;
+//            }
+//            printf("%d ", temp);
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第97题
+//描述
+//今天牛牛学到了回文串,他想在数字里面找回文,即回文数
+//回文数是正着读与倒着读都一样的数,比如1221,343是回文数,433不是回文数。
+//请输出不超过n的回文数。
+//输入描述:
+//输入一个整数n(1<=n<=100000)
+//输出描述:
+//从1开始按从小到大的顺序输出所有回文数
+//#include <stdio.h>
+//#include<math.h>
+//int print(int n, int* arr) {
+//    int temp = n;
+//    int count = 0;
+//    while (n > 0) {
+//        n = n / 10;
+//        count++;
+//    }
+//    int temp1 = count;
+//    while (temp > 0) {
+//        arr[count - 1] = temp % 10;
+//        count--;
+//        temp = temp / 10;
+//    }
+//    return temp1;
+//}
+//
+//int back_num(int* arr, int count) {
+//    int left = 0;
+//    int temp = count;
+//    int average = count / 2;
+//    count = count - 1;
+//    int flag = 0;
+//    while (flag == 0) {
+//        if (arr[left] == arr[count]) {
+//            left++;
+//            count--;
+//        }
+//        else
+//        {
+//            flag = 1;
+//        }
+//        if (left > temp  || count < 0) {
+//            break;
+//        }
+//    }
+//    if (flag == 0) {
+//        return 1;
+//    }
+//    return 0;
+//}
+//int main() {
+//    int num = 0;
+//    scanf("%d", &num);
+//    int j = 0;
+//    for (j = 1; j <= num; j++) {
+//        int arr[10] = { 0 };
+//        int count = print(j, arr);
+//        int ret = back_num(arr, count);
+//        if (ret == 1) {
+//            int i = 0;
+//            int temp = 0;
+//            int temp1 = count;
+//            for (i = 0; i < temp1; i++) {
+//                temp = pow(10, i) * arr[count - 1] + temp;
+//                count--;
+//            }
+//            printf("%d ", temp);
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第98题
+//描述
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用"*"组成的线段图案。
+//输入描述:
+//多组输入,一个整数(1~100),表示线段长度,即"*"的数量。
+//输出描述:
+//针对每行输入,输出占一行,用"*"组成的对应长度的线段。
+//#include <stdio.h>
+//
+//int main() 
+//{
+//    int i = 0;
+//    int num = 0;
+//    while (scanf("%d", &num) != EOF)
+//    {
+//        for (i = 0;i < num;i++)
+//        {
+//            printf("*");
+//        }
+//        printf("\n");
+//    }
+//    return 0;
+//}
+
+
+//第99题
+//描述
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用"*"组成的正方形图案
+//输入描述:
+//多组输入,一个整数(1~20),表示正方形的长度,也表示输出行数。
+//输出描述:
+//针对每行输入,输出用"*"组成的对应边长的正方形,每个"*"后面有一个空格。
+//#include <stdio.h>
+//
+//int main()
+//{
+//    int i = 0;
+//    int j = 0;
+//    int num = 0;
+//    while (scanf("%d", &num) != EOF) 
+//    {
+//        for (i = num;i > 0;i--)
+//        {
+//            for (j = 0;j < num;j++)
+//            {
+//                printf("* ");
+//            }
+//            printf("\n");
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第100题
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用"*"组成的直角三角形图案。
+//输入描述:
+//多组输入,一个整数(2~20),表示直角三角形直角边的长度,即"*"的数量,也表示输出行数。
+//输出描述:
+//针对每行输入,输出用"*",组成的对应长度的直角三角形,每个"*"后面有一个空格。
+//5
+//*
+//**
+//***
+//****
+//*****
+//#include <stdio.h>
+//int main() 
+//{
+//    int num = 0;
+//    int i = 0;
+//    int j = 0;
+//    while (scanf("%d", &num) != EOF) {
+//        for (i = 1;i <= num;i++)
+//        {
+//            for (j = 1;j <= i;j++)
+//            {
+//                printf("* ");
+//            }
+//            printf("\n");
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第101题
+//描述
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用"*"组成的翻转直角三角形图案。
+//输入描述:
+//多组输入,一个整数(2~20),表示翻转直角三角形直角边的长度,即"*"的数量
+//也表示输出行数。
+//输出描述:
+//针对每行输入,输出用"*"组成的对应长度的翻转直角三角形,每个"*"后面有一个空格。
+//#include <stdio.h>
+//
+//int main() {
+//    int num = 0;
+//    int i = 0;
+//    int j = 0;
+//    while (scanf("%d", &num) != EOF) 
+//    {
+//        for (i = num; i > 0; i--) 
+//        {
+//            for (j = 0; j < i; j++) 
+//            {
+//                printf("* ");
+//            }
+//            printf("\n");
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第102题
+//描述
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用"*"组成的带空格直角三角形图案。
+//输入描述:
+//多组输入,一个整数(2~20),表示直角三角形直角边的长度,即"*"的数量,也表示输出行数。
+//输出描述:
+//针对每行输入,输出用"*"组成的对应长度的直角三角形,每个"*"后面有一个空格。
+//#include <stdio.h>
+//int main() 
+//{
+//    int num = 0;
+//    int i = 0;
+//    int j = 0;
+//    int k = 0;
+//    while (scanf("%d", &num) != EOF) 
+//    {
+//        for (i = 1;i <= num;i++)
+//        {
+//            for (j = 1;j <= num - i;j++)
+//            {
+//                printf("  ");
+//            }
+//            for (k = 1;k <= i;k++)
+//            {
+//                printf("* ");
+//            }
+//            printf("\n");
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第103题
+//描述
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用"*"组成的金字塔图案
+//输入描述:
+//多组输入,一个整数(2~20),表示金字塔边的长度,即"*"的数量,也表示输出行数。
+//输出描述:
+//针对每行输入,输出用"*"组成的金字塔, 每个"*"后面有一个空格。
+//#include <stdio.h>
+//int main() 
+//{
+//    int num = 0;
+//    int i = 0;
+//    int j = 0;
+//    int k = 0;
+//    int l = 0;
+//    while (scanf("%d", &num) != EOF) 
+//    {
+//        for (i = 1;i <= num;i++)
+//        {
+//            for (j = 1;j <= num - i;j++)
+//            {
+//                printf(" ");
+//            }
+//            for (k = 1;k <= i;k++)
+//            {
+//                printf("* ");
+//            }
+//            printf("\n");
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第104题
+//描述
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用"*"组成的翻转金字塔图案。
+//输入描述:
+//多组输入,一个整数(2~20),表示翻转金字塔边的长度,即"*"的数量,也表示输出行数。
+//输出描述:
+//针对每行输入,输出用"*"组成的金字塔,每个"*"后面有一个空格。
+//#include <stdio.h>
+//int main() 
+//{
+//    int i = 0;
+//    int num = 0;
+//    int j = 0;
+//    int k = 0;
+//    while (scanf("%d", &num) != EOF) 
+//    {
+//        int temp = num;
+//        for (i = 1;i <= num;i++)
+//        {
+//            for (j = 1;j <= i-1;j++)
+//            {
+//                if (i == 1)
+//                {
+//                    continue;
+//                }
+//                printf(" ");
+//            }
+//            for (k = 1;k <= temp;k++)
+//            {
+//                printf("* ");
+//            }
+//            temp--;
+//            printf("\n");
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第105题
+//描述
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用"*"组成的菱形图案。
+//输入描述:
+//多组输入,一个整数(2~20)
+//输出描述：
+//针对每行输入,输出用"*"组成的菱形,每个"*"后面有一个空格。
+//2
+//  *
+// * *
+//* * *
+// * *
+//  *
+//#include <stdio.h>
+//
+//int main() 
+//{
+//    int num = 0;
+//    int i = 0;
+//    int j = 0;
+//    int k = 0;
+//    while (scanf("%d", &num) != EOF) 
+//    {
+//        int temp = 1;
+//        int temp1 = num;
+//        int temp2 = num;
+//        //打印上三角
+//        for (i = 1; i <= num; i++) 
+//        {
+//            for (j = 1; j <= temp1; j++) 
+//            {
+//                printf(" ");
+//            }
+//            for (k = 1; k <= temp; k++) 
+//            {
+//                printf("* ");
+//            }
+//            temp1--;
+//            temp++;
+//            printf("\n");
+//        }
+//        for (i = 1; i <= num + 1; i++) 
+//        {
+//            printf("* ");
+//        }
+//        printf("\n");
+//        for (i = 1; i <= num; i++) 
+//        {
+//            for (j = 1; j <= i; j++) 
+//            {
+//                printf(" ");
+//            }
+//            for (k = 1; k <= temp2; k++) 
+//            {
+//                printf("* ");
+//            }
+//            temp2--;
+//            printf("\n");
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第106题
+//描述
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用"*"组成的K形图案
+//输入描述:
+//多组输入,一个整数(2~20)
+//输出描述:
+//针对每行输入,输出用"*"组成的K形,每个"*"后面有一个空格
+//2
+//***
+//**
+//*
+//**
+//***
+//#include <stdio.h>
+//
+//int main() {
+//    int num = 0;
+//    int i = 0;
+//    int j = 0;
+//    int k = 0;
+//    while (scanf("%d", &num) != EOF) 
+//    {
+//        for (i = num + 1;i > 1;i--)
+//        {
+//            for (j = 1;j <= i;j++)
+//            {
+//                printf("* ");
+//            }
+//            printf("\n");
+//        }
+//        printf("*\n");
+//        for (i = 1;i <= num;i++)
+//        {
+//            for (j = 1;j <= i + 1;j++)
+//            {
+//                printf("* ");
+//            }
+//            printf("\n");
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第107题
+//描述
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用"*"组成的箭形图案。
+//输入描述:
+//本题多组输入,每行一个整数(2~20)。
+//输出描述:
+//针对每行输入,输出用"*"组成的箭形。
+//#include <stdio.h>
+//
+//int main() 
+//{
+//    int num = 0;
+//    int i = 0;
+//    int j = 0;
+//    int k = 0;
+//    while (scanf("%d", &num) != EOF) 
+//    {
+//        int temp1 = num;
+//        int temp2 = num;
+//        for (i = 1;i<=num;i++)
+//        {
+//            for (j = temp1;j > 0;j--)
+//            {
+//                printf("  ");
+//            }
+//            for (k = 1;k <= i;k++)
+//            {
+//                printf("*");
+//            }
+//            temp1--;
+//            printf("\n");
+//        }
+//        for (i = 1;i <= num + 1;i++)
+//        {
+//            printf("*");
+//        }
+//        printf("\n");
+//        for (i = 1;i <= num;i++)
+//        {
+//            for (j = 1;j <= i;j++)
+//            {
+//                printf("  ");
+//            }
+//            for (k = temp2;k > 0;k--)
+//            {
+//                printf("*");
+//            }
+//            temp2--;
+//            printf("\n");
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第108题
+//描述
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用"*"组成的反斜线形图案。
+//输入描述:
+//多组输入,一个整数(2~20),表示输出的行数,也表示组成反斜线的"*"的数量
+//输出描述:
+//针对每行输入,输出用"*"组成的反斜线。
+//#include <stdio.h>
+//
+//int main() 
+//{
+//    int i = 0;
+//    int num = 0;
+//    int j = 0;
+//    while (scanf("%d", &num) != EOF) 
+//    {
+//        for (i = 1; i <= num; i++) 
+//        {
+//            for (j = 1; j < i; j++) 
+//            {
+//                printf(" ");
+//            }
+//            printf("*\n");
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第109题
+//描述
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用"*"组成的正斜线形图案。
+//输入描述:
+//多组输入,一个整数(2~20),表示输出的行数,也表示组成正斜线的"*"的数量
+//输出描述:
+//针对每行输入,输出用"*"组成的正斜线。
+//#include <stdio.h>
+//int main() {
+//    int num = 0;
+//    int i = 0;
+//    int j = 0;
+//    while (scanf("%d", &num) != EOF) 
+//    {
+//        for (i = num;i > 0;i--)
+//        {
+//            for (j = 1;j <= i - 1;j++)
+//            {
+//                printf(" ");
+//            }
+//            printf("*\n");
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第110题
+//描述
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用"*"组成的X形图案。
+//输入描述:
+//多组输入,一个整数(2~20),表示输出的行数
+//也表示组成"x"的反斜线和正斜线的长度。
+//输出描述:
+//针对每行输入,输出用"*"组成的X形图案。
+//5
+//*   *
+// * *
+//  *
+// * *
+//*   *
+//7
+//*     *
+// *   *
+//  * *
+//   *
+//  * *
+// *   *
+//*     *
+//6
+//*    *
+// *  *
+//  **
+//  **
+// *  *
+//*    *
+//4
+//*  *
+// **
+// **
+//*  *
+//#include <stdio.h>
+//int main() 
+//{
+//    int num = 0;
+//    int i = 0;
+//    int j = 0;
+//    while (scanf("%d", &num) != EOF) 
+//    {
+//        if (num % 2 == 0) 
+//        {
+//            num = (num - 2) / 2;
+//            int temp1 = num;
+//            int temp2 = num;
+//            for (i = 1; i <= num; i++) 
+//            {
+//                for (j = 0;j < i;j++)
+//                {
+//                    if (j == 0)
+//                    {
+//                        continue;
+//                    }
+//                    printf(" ");
+//                }
+//                printf("*");
+//                for (j = 1; j <= 2 * temp1; j++)
+//                {
+//                    printf(" ");
+//                }
+//                printf("*\n");
+//                temp1--;
+//            }
+//            for (j = 1;j <= 2;j++)
+//            {
+//                for (i = 1; i <= num; i++)
+//                {
+//                    printf(" ");
+//                }
+//                printf("**\n");
+//            }
+//            for (i = 1; i <= num; i++) 
+//            {
+//                for (j = 1;j < temp2;j++)
+//                {
+//                    printf(" ");
+//                }
+//                temp2--;
+//                printf("*");
+//                for (j = 1; j <= 2 * i; j++) 
+//                {
+//                    printf(" ");
+//                }
+//                printf("*\n");
+//            }
+//            temp2--;
+//        }
+//        else 
+//        {
+//            num = (num - 1) / 2;
+//            int temp3 = num;
+//            int temp4 = num;
+//            for (i = 1; i <= num; i++) 
+//            {
+//                for (j = 0; j < i; j++) 
+//                {
+//                    if (j == 0)
+//                    {
+//                        continue;
+//                    }
+//                    printf(" ");
+//                }
+//                printf("*");
+//                for (j = 1; j <= 2 * temp3 - 1; j++) 
+//                {
+//                    printf(" ");
+//                }
+//                printf("*\n");
+//                temp3--;
+//            }
+//            for (i = 1;i <= num;i++)
+//            {
+//                printf(" ");
+//            }
+//            printf("*\n");
+//            for (i = 1; i <= num; i++) 
+//            {
+//                for (j = 1;j < temp4;j++)
+//                {
+//                    printf(" ");
+//                }
+//                printf("*");
+//                for (j = 1; j <= 2 * i - 1; j++) 
+//                {
+//                    printf(" ");
+//                }
+//                printf("*\n");
+//                temp4--;
+//            }
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第111题
+//描述
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用"*"组成的"空心"正方形图案
+//输入描述:
+//多组输入,一个整数(3~20),表示输出的行数,也表示组成正方形边的"*"的数量。
+//输出描述:
+//针对每行输入,输出用"*"组成的"空心"正方形,每个"*"后面有一个空格。
+//3
+//* * *
+//*   *
+//* * *
+//4
+//* * * *
+//*     *
+//*     *
+//* * * *
+//#include <stdio.h>
+//int main()
+//{
+//    int num = 0;
+//    int i = 0;
+//    int j = 0;
+//    int k = 0;
+//    while (scanf("%d", &num) != EOF) 
+//    {
+//        for (i = 1;i <= num;i++)
+//        {
+//            if (i == 1 || i == num)
+//            {
+//                for (j = 1;j <= num;j++)
+//                {
+//
+//                    printf("* ");
+//                }
+//                printf("\n");
+//            }
+//            else
+//            {
+//                printf("* ");
+//                for (k = 1;k <= num - 2;k++)
+//                {
+//                    printf("  ");
+//                }
+//                printf("*");
+//                printf("\n");
+//            }
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第112题
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用"*"组成的“空心”三角形图案。
+//输入描述:
+//多组输入,一个整数(3~20),表示输出的行数,也表示组成三角形边的"*"的数量。
+//输出描述:
+//针对每行输入,输出用"*"组成的“空心”三角形, 每个"*"后面有一个空格。
+//4
+//* 
+//* *
+//*   *
+//* * * *
+//5
+//*
+//* *
+//*   *
+//*     *
+//* * * * *
+//#include <stdio.h>
+//int main() 
+//{
+//    int num = 0;
+//    int i = 0;
+//    int j = 0;
+//    int k = 0;
+//    while (scanf("%d", &num) != EOF) 
+//    {
+//        for (i = 1;i <= num - 1;i++)
+//        {
+//            for (j = 1;j <= i;j++)
+//            {
+//                if (j == i || j == 1)
+//                {
+//                    printf("* ");
+//                }
+//                else {
+//                    printf("  ");
+//                }
+//            }
+//            printf("\n");
+//        }
+//        for (k = 1;k <= num;k++)
+//        {
+//            printf("* ");
+//        }
+//        printf("\n");
+//    }
+//    return 0;
+//}
+
+
+//第113题
+//描述
+//KiKi学习了循环,BoBo老师给他出了一系列打印图案的练习
+//该任务是打印用数字组成的数字三角形图案。
+//输入描述:
+//多组输入,一个整数(3~20),表示数字三角形边的长度,即数字的数量,也表示输出行数。
+//输出描述:
+//针对每行输入,输出用数字组成的对应长度的数字三角形,每个数字后面有一个空格。
+//4
+//1
+//1 2
+//1 2 3
+//1 2 3 4
+//5
+//1
+//1 2
+//1 2 3
+//1 2 3 4
+//1 2 3 4 5
+//#include <stdio.h>
+//
+//int main() 
+//{
+//    int num = 0;
+//    int i = 0;
+//    int j = 0;
+//    while (scanf("%d", &num) != EOF) 
+//    {
+//        for (i = 1; i <= num; i++) 
+//        {
+//            for (j = 1; j <= i; j++) 
+//            {
+//                printf("%d ", j);
+//            }
+//            printf("\n");
+//        }
+//    }
+//    return 0;
+//}
+
+
+//第114题
+//今天是圣诞节,牛牛要打印一个漂亮的圣诞树送给想象中的女朋友,
+//请你帮助他实现梦想。
+//输入描述:
+//输入圣诞树的高度h
+//输出描述:
+//输出对应的圣诞树
+//2
+//     *
+//    * *
+//   * * *
+//  *     *
+// * *   * *
+//* * * * * *
+//     *
+//     *
+//#include<stdio.h>
+//int main()
+//{
+//	int num2 = 2;
+//	int i = 0;
+//	int j = 0;
+//	int k = 0;
+//	int p = 0;
+//	int q = 0;
+//	int num = 0;
+//	while (scanf("%d", &num) != EOF)
+//	{
+//		int temp1 = 3*num-1;
+//		int count = 1;
+//		int count1 = 1;
+//		for (q = 1;q <= num;q++)
+//		{
+//			int temp2 = 2;
+//			for (i = 1;i <= 3;i++)
+//			{
+//				count = 0;
+//				for (j = 1;j <= temp1;j++)
+//				{
+//					printf(" ");
+//				}
+//				temp1--;
+//			again:
+//				for (k = 1;k <= i;k++)
+//				{
+//					printf("* ");
+//				}
+//				for (p = 1;p <= temp2;p++)
+//				{
+//					printf("  ");
+//				}
+//				count++;
+//				if (count < count1)
+//				{
+//					goto again;
+//				}
+//				else
+//				{
+//					temp2--;
+//					printf("\n");
+//				}
+//			}
+//			count1++;
+//		}
+//		for (i = 1;i <= num;i++)
+//		{
+//			for (j = 1;j <= 3*num-1;j++)
+//			{
+//				printf(" ");
+//			}
+//			printf("*\n");
+//		}
+//	}
+//	return 0;
+//}
+
+
+//第116题
+//试计算在区间1到n的所有整数中,数字x(0≤x≤9)共出现了多少次？
+//例如,在1到11中,即在1、2、3、4、5、6、7、8、9、10、11中
+//数字1出现了4次。
+//输入描述:
+//输入共1行,包含2个整数n、x,之间用一个空格隔开。
+//输出描述:
+//输出共1行,包含一个整数,表示x出现的次数。
+//#include<stdio.h>
+//int print(int num,int num1)
+//{
+//	int count = 0;
+//	int temp = 0;
+//	while (num)
+//	{
+//		temp = num % 10;
+//		if (temp == num1)
+//		{
+//			count++;
+//		}
+//		num = num / 10;
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	int num = 0;
+//	int num1 = 0;
+//	scanf("%d %d", &num, &num1);
+//	int i = 0;
+//	int count = 0;
+//	for (i = 1;i <= num;i++)
+//	{
+//		int ret = print(i, num1);
+//		count = ret + count;
+//	}
+//	printf("%d\n", count);
+//	return 0;
+//}
+
+
+//第117题
+//描述
+//输入10个整数,要求按输入时的逆序把这10个数打印出来。
+//逆序输出,就是按照输入相反的顺序打印这10个数。
+//输入描述:
+//一行,输入10个整数(范围-231~231-1),用空格分隔。
+//输出描述:
+//一行,逆序输出输入的10个整数,用空格分隔。
+//#include<stdio.h>
+//void back(int* arr, int sz)
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0;i < sz - 1;i++)
+//	{
+//		for (j = 0;j < sz - i - 1;j++)
+//		{
+//			int temp = arr[j];
+//			arr[j] = arr[j + 1];
+//			arr[j + 1] = temp;
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int i = 0;
+//	for (i = 0;i < 10;i++)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//	int sz = 10;
+//	back(arr, sz);
+//	for (i = 0;i < 10;i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
+
+
+//第118题
+//描述
+//输入数字N,然后输入N个数,计算这N个数的和
+//输入描述:
+//第一行输入一个整数N(0≤N≤50),第二行输入用空格分隔的N个整数
+//输出描述:
+//输出为一行,为第二行输入的"N个整数之和"的计算结果
+//#include<stdio.h>
+//int main()
+//{
+//	int num = 0;
+//	int arr[100] = { 0 };
+//	scanf("%d", &num);
+//	int j = 0;
+//	for (j = 0;j < num;j++)
+//	{
+//		scanf("%d", &arr[j]);
+//	}
+//	int i = 0;
+//	int sum = 0;
+//	for (i = 0;i < num;i++)
+//	{
+//		sum = sum + arr[i];
+//	}
+//	printf("%d\n", sum);
+//	return 0;
+//}
+
+
+//第119题
+//描述
+//输入n个成绩,换行输出n个成绩中最高分数和最低分数的差
+//输入描述:
+//两行,第一行为n,表示n个成绩,不会大于10000
+//第二行为n个成绩(整数表示,范围0~100),以空格隔开
+//输出描述:
+//一行,输出n个成绩中最高分数和最低分数的差
+//#include<stdio.h>
+//void sort(int* arr, int num1)
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0;i < num1 - 1;i++)
+//	{
+//		for (j = 0;j < num1 - i - 1;j++)
+//		{
+//			if (arr[j] < arr[j + 1])
+//			{
+//				int temp = arr[j];
+//				arr[j] = arr[j + 1];
+//				arr[j + 1] = temp;
+//			}
+//		}
+//	}
+//	printf("%d\n", arr[0] - arr[num1-1]);
+//}
+//int main()
+//{
+//	int num1 = 0;
+//	scanf("%d", &num1);
+//	int i = 0;
+//	int arr[50] = { 0 };
+//	for (i = 0;i < num1;i++)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//	sort(arr, num1);
+//	return 0;
+//}
+
+
+//第120题
+//描述
+//期中考试开始了,大家都想取得好成绩,争夺前五名。
+//从键盘输入n个学生成绩,输出每组排在前五高的成绩。
+//数据范围:5≤n≤50,成绩采取百分制并不会出现负数
+//输入描述:
+//两行,第一行输入一个整数,表示n个学生(n>=5)
+//第二行输入n个学生成绩(整数表示,范围0~100),用空格分隔。
+//输出描述:
+//一行,输出成绩最高的前五个,用空格分隔。
+//#include<stdio.h>
+//void sort(int* arr, int num1)
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0;i < num1 - 1;i++)
+//	{
+//		for (j = 0;j < num1 - i - 1;j++)
+//		{
+//			if (arr[j] < arr[j + 1])
+//			{
+//				int temp = arr[j];
+//				arr[j] = arr[j + 1];
+//				arr[j + 1] = temp;
+//			}
+//		}
+//	}
+//	for (i = 0;i < 5;i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//}
+//int main()
+//{
+//	int num1 = 0;
+//	int arr1[50] = { 0 };
+//	int i = 0;
+//	scanf("%d", &num1);
+//	for (i = 0;i < num1;i++)
+//	{
+//		scanf("%d", &arr1[i]);
+//	}
+//	sort(arr1, num1);
+//	return 0;
+//}
+
+
+//第121题
+//描述
+//输入两个升序排列的序列,将两个序列合并为一个有序序列并输出。
+//数据范围:1≤n,m≤1000
+//序列中的值满足0≤val≤30000
+//输入描述:
+//输入包含三行
+//第一行包含两个正整数n,m,用空格分隔。
+//n表示第二行第一个升序序列中数字的个数
+//m表示第三行第二个升序序列中数字的个数。
+//第二行包含n个整数,用空格分隔。
+//第三行包含m个整数,用空格分隔。
+//#include<stdio.h>
+//void sort(int* arr1, int* arr2,int num1,int num2)
+//{
+//	int arr[2000] = { 0 };
+//	int num = num1 + num2;
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0;i < num1;i++)
+//	{
+//		arr[i] = arr1[i];
+//	}
+//	for (j = num1;j < num;j++)
+//	{
+//		arr[j] = arr2[j - num1];
+//	}
+//	for (i = 0;i < num - 1;i++)
+//	{
+//		for (j = 0;j < num - i - 1;j++)
+//		{
+//			if (arr[j] > arr[j + 1])
+//			{
+//				int temp = arr[j];
+//				arr[j] = arr[j + 1];
+//				arr[j + 1] = temp;
+//			}
+//		}
+//	}
+//	for (i = 0;i < num;i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//}
+//int main()
+//{
+//	int num1 = 0;
+//	int num2 = 0;
+//	scanf("%d %d", &num1, &num2);
+//	int arr1[1000] = { 0 };
+//	int arr2[1000] = { 0 };
+//	int i = 0;
+//	for (i = 0;i < num1;i++)
+//	{
+//		scanf("%d", &arr1[i]);
+//	}
+//	for (i = 0;i < num2;i++)
+//	{
+//		scanf("%d", &arr2[i]);
+//	}
+//	sort(arr1, arr2, num1, num2);
+//	return 0;
+//}
+
+
+//第122题
+//描述
+//输入一个整数序列,判断是否是有序序列
+//有序,指序列中的整数从小到大排序或者从大到小排序(相同元素也视为有序)
+//数据范围:3≤n≤50
+//序列中的值都满足1≤val≤100
+//输入描述:
+//第一行输入一个整数N(3≤N≤50)
+//第二行输入N个整数,用空格分隔N个整数
+//输出描述:
+//输出为一行,如果序列有序输出sorted,否则输出unsorted
+//#include<stdio.h>
+//void sort1(int* arr1, int num)
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0;i < num - 1;i++)
+//	{
+//		for (j = 0;j < num - i - 1;j++)
+//		{
+//			if (arr1[j] > arr1[j + 1])
+//			{
+//				int temp = arr1[j];
+//				arr1[j] = arr1[j + 1];
+//				arr1[j + 1] = temp;
+//			}
+//		}
+//	}
+//}
+//void sort2(int* arr1, int num)
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0;i < num - 1;i++)
+//	{
+//		for (j = 0;j < num - i - 1;j++)
+//		{
+//			if (arr1[j] < arr1[j + 1])
+//			{
+//				int temp = arr1[j];
+//				arr1[j] = arr1[j + 1];
+//				arr1[j + 1] = temp;
+//			}
+//		}
+//	}
+//}
+//int main()
+//{
+//	int num = 0;
+//	int arr1[100] = { 0 };
+//	int arr2[100] = { 0 };
+//	int arr3[100] = { 0 };
+//	scanf("%d", &num);
+//	int i = 0;
+//	for (i = 0;i < num;i++)
+//	{
+//		scanf("%d", &arr1[i]);
+//	}
+//	for (i = 0;i < num;i++)
+//	{
+//		arr2[i] = arr1[i];
+//		arr3[i] = arr1[i];
+//	}
+//	sort1(arr2, num);
+//	sort2(arr3, num);
+//	int flag = 1;
+//	for (i = 0;i < num;i++)
+//	{
+//		if (arr1[i] != arr2[i] || arr1[i] != arr3[i])
+//		{
+//			flag = 0;
+//			break;
+//		}
+//	}
+//	if (flag == 1)
+//	{
+//		printf("sorted\n");
+//	}
+//	else
+//	{
+//		printf("unsorted\n");
+//	}
+//	return 0;
+//}
+
+
+//第123题
+//描述
+//有一个有序数字序列
+//从小到大排序将一个新输入的数插入到序列中
+//保证插入新数后,序列仍然是升序。
+//输入描述:
+//第一行输入一个整数N(0≤N≤50)。
+//第二行输入N个升序排列的整数,输入用空格分隔的N个整数
+//第三行输入想要进行插入的一个整数
+//输出描述:
+//输出为一行,N+1个有序排列的整数
+//#include<stdio.h>
+//void sort1(int* arr1, int num1)
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0;i < num1 - 1;i++)
+//	{
+//		for (j = 0;j < num1 - i - 1;j++)
+//		{
+//			if (arr1[j] > arr1[j + 1])
+//			{
+//				int temp = arr1[j];
+//				arr1[j] = arr1[j + 1];
+//				arr1[j + 1] = temp;
+//			}
+//		}
+//	}
+//	for (i = 0;i < num1;i++)
+//	{
+//		printf("%d ", arr1[i]);
+//	}
+//}
+//int main()
+//{
+//	int num1 = 0;
+//	int num2 = 0;
+//	int arr1[100] = { 0 };
+//	scanf("%d", &num1);
+//	int i = 0;
+//	for (i = 0;i < num1;i++)
+//	{
+//		scanf("%d", &arr1[i]);
+//	}
+//	scanf("%d", &num2);
+//	arr1[num1] = num2;
+//	sort1(arr1, num1+1);
+//	return 0;
+//}
+
+
+//第124题
+//描述
+//有一个整数序列(可能有重复的整数),现删除指定的某一个整数
+//输出删除指定数字之后的序列,序列中未被删除数字的前后位置没有发生改变。
+//数据范围:序列长度和序列中的值都满足1≤n≤50
+//输入描述:
+//第一行输入一个整数(0≤N≤50)。
+//第二行输入N个整数,输入用空格分隔的N个整数。
+//第三行输入想要进行删除的一个整数。
+//输出描述:
+//输出为一行,删除指定数字之后的序列。
+//void back(int* arr, int num1, int num2)
+//{
+//	int i = 0;
+//	int j = 0;
+//	int count = 0;
+//	for (i = 0;i < num1;i++)
+//	{
+//		while (arr[i] == num2)
+//		{
+//			count++;
+//			for (j = i;j < num1;j++)
+//			{
+//				arr[j] = arr[j + 1];
+//			}
+//		}
+//	}
+//	for (j = 0;j < num1 - count;j++)
+//	{
+//		printf("%d ", arr[j]);
+//	}
+//}
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[100] = { 0 };
+//	int num1 = 0; 
+//	scanf("%d", &num1);
+//	int i = 0;
+//	for (i = 0;i < num1;i++)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//	int num2 = 0;
+//	scanf("%d", &num2);
+//	back(arr, num1, num2);
+//}
+
+
+//第125题
+//描述
+//输入n个整数的序列, 要求对这个序列进行去重操作。
+//所谓去重,是指对这个序列中每个重复出现的整数
+//只保留该数第一次出现的位置,删除其余位置。
+//输入描述:
+//输入包含两行
+//第一行包含一个正整数n(1≤n≤1000),表示第二行序列中数字的个数
+//第二行包含n个整数(范围1~5000),用空格分隔。
+//输出描述:
+//输出为一行,按照输入的顺序输出去重之后的数字,用空格分隔。
+//#include<stdio.h>
+//void qu_chong(int* arr, int num)
+//{
+//	int i = 0;
+//	int j = 0;
+//	int num1 = 0;
+//	int k = 0;
+//	for (i = 0;i < num;i++)
+//	{
+//		num1 = arr[i];
+//		j = i + 1;
+//		while (j < num)
+//		{
+//			if (arr[j] == num1)
+//			{
+//				for (k = j;k < num - 1;k++)
+//				{
+//					arr[k] = arr[k + 1];
+//				}
+//				num--;
+//			}
+//			else//先进行判断,防止第j+1个元素也相同
+//			{
+//				j++;
+//			}
+//		}
+//	}
+//	for (i = 0;i < num;i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//}
+//int main()
+//{
+//	int arr[100] = { 0 };
+//	int num = 0;
+//	scanf("%d", &num);
+//	int i = 0;
+//	for (i = 0;i < num;i++)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//	qu_chong(arr, num);
+//	return 0;
+//}
+
+
+//第126题
+//描述
+//给定n个整数和一个整数x,小乐乐想从n个整数中判断x出现几次
+//请编程帮他实现。
+//输入描述:
+//共3行
+//第一行,一个整数,表示n(1<=n<=100)
+//第二行,共输入n个整数,两个整数之间用空格分隔。
+//第三行,输入一个整数,表示要查找的整数x。
+//输出描述：
+//一行，表示整数x出现的次数。
+//#include<stdio.h>
+//void sort(int* arr, int num1, int num2)
+//{
+//	int count = 0;
+//	int i = 0;
+//	for (i = 0;i < num1;i++)
+//	{
+//		if (arr[i] == num2)
+//		{
+//			count++;
+//		}
+//	}
+//	printf("%d\n", count);
+//}
+//int main()
+//{
+//	int num1 = 0;
+//	scanf("%d", &num1);
+//	int arr[100] = { 0 };
+//	int i = 0;
+//	for (i = 0;i < num1;i++)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//	int num2 = 0;
+//	scanf("%d", &num2);
+//	sort(arr, num1, num2);
+//	return 0;
+//}
+
+
+//第127题
+//描述
+//用筛选法求n以内的素数。
+//筛选法求解过程为
+//将2~n之间的正整数放在数组内存储,将数组中2之后的所有能被2整除的数清0
+//再将3之后的所有能被3整除的数清0,以此类推,直到n为止。
+//数组中不为0的数即为素数。
+//输入描述:
+//多组输入,每行输入一个正整数(不大于100)
+//输出描述:
+//针对每行输入的整数n,输出两行,第一行,输出n之内(包括n)的素数,用空格分隔
+//第二行,输出数组中2之后被清0的个数。
+//每行输出后换行。
+//#include<stdio.h>
+//int sort(int num1,int num)
+//{
+//	int i = 0;
+//	int temp = 2;
+//	int temp1 = 1;
+//	int arr1[100] = { 0 };
+//	int flag = 0;
+//	for (i = 0;i < num - 1;i++)
+//	{
+//		if (temp == num + 1)
+//		{
+//			break;
+//		}
+//		arr1[i] = temp;
+//		temp++;
+//	}
+//	for (i = 0;i < num - 1;i++)
+//	{
+//		temp1 = arr1[i];
+//		if (num1 % temp1 == 0 && num1 != temp1)
+//		{
+//			flag = 1;
+//			break;
+//		}
+//	}
+//	if (flag == 0)
+//	{
+//		return 1;
+//	}
+//	else
+//	{
+//		return 0;
+//	}
+//}
+//int main()
+//{
+//	int num = 0;
+//	scanf("%d", &num);
+//	int i = 0;
+//	int count = 0;
+//	for (i = 2;i <= num;i++)
+//	{
+//		int ret = sort(i,num);
+//		if (ret == 1)
+//		{
+//			count++;
+//			printf("%d ", i);
+//		}
+//	}
+//	printf("\n");
+//	printf("%d\n", num - count - 1);
+//	return 0;
+//}
+
+
+
+//#include<stdio.h>
+//void print(int (*p)[5])
+//{
+//	int i = 0;
+//	int j = 0;
+//	int sum = 0;
+//	for (i = 0;i < 5;i++)
+//	{
+//		for (j = 0;j < 5;j++)
+//		{
+//			sum = sum + ((*p)[i][j]);
+//			printf("%d ", (*p[j] + i));
+//		}
+//	}
+//}
+//int main()
+//{
+//	float arr1[5] = { 0.0 };
+//	float arr2[5] = { 0.0 };
+//	float arr3[5] = { 0.0 };
+//	float arr4[5] = { 0.0 };
+//	float arr5[5] = { 0.0 };
+//	float* arr[5] = { arr1,arr2,arr3,arr4,arr5 };
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0;i < 5;i++)
+//	{
+//		for (j = 0;j < 5;j++)
+//		{
+//			scanf("%f", &arr[i][j]);
+//		}
+//	}
+//	print(arr);
+//	return 0;
+//}
+
+
