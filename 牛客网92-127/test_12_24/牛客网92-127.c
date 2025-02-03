@@ -1788,3 +1788,402 @@
 //}
 
 
+//第128题
+//描述
+//输入一个班级5个学生各5科成绩,输出5个学生各5科成绩及总分。
+//输入描述:
+//五行,每行输入一个学生各5科成绩(浮点数表示,范围0.0~100.0),用空格分隔。
+//输出描述:
+//五行,按照输入顺序每行输出一个学生的5科成绩及总分(小数点保留1位)
+//用空格分隔。
+//示例1
+//输入:
+//98.5 96.0 100 99 88
+//60.5 77 88.5 99 60
+//80 80.5 89 91 92
+//93 94 95.5 96 97.5
+//100 98 88.5 88 78.5
+//输出:
+//98.5 96.0 100.0 99.0 88.0 481.5
+//60.5 77.0 88.5 99.0 60.0 385.0
+//80.0 80.5 89.0 91.0 92.0 432.5
+//93.0 94.0 95.5 96.0 97.5 476.0
+//100.0 98.0 88.5 88.0 78.5 453.0
+//#include<stdio.h>
+//#define ROW 6
+//#define COL 6
+//void avg(double score[ROW][COL], int row, int col)
+//{
+//	int i = 0;
+//	for (i = 0; i < row - 1; i++)
+//	{
+//		double sum = 0;
+//		int j = 0;
+//		for (j = 0; j < col - 1; j++)
+//		{
+//			sum += score[i][j];
+//			if (j == col - 2)
+//			{
+//				score[i][5] = sum;
+//			}
+//		}
+//	}
+//	for (i = 0; i < row - 1; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < col; j++)
+//		{
+//			printf("%.1lf ", score[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+//int main()
+//{
+//	double score[ROW][COL];
+//	int i = 0;
+//	double num = 0;
+//	for (i = 0; i < ROW - 1; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < COL - 1; j++)
+//		{
+//			scanf("%lf", &num);
+//			score[i][j] = num;
+//		}
+//	}
+//	avg(score, ROW, COL);
+//	return 0;
+//}
+
+
+//第129题
+//描述
+//KiKi得到了一个n行m列的矩阵,现在他想知道第x行第y列的值是多少
+//请你帮助他完成这个任务。
+//数据范围:1≤n,m≤5,矩阵中的值满足1≤val≤25
+//输入描述:
+//第一行包含两个数n和m,表示这个矩阵包含n行m列。
+//从2到n+1行,每行输入m个整数(范围-231~231-1),用空格分隔
+//共输入n*m个数,表示矩阵中的元素。
+//接下来一行输入x和y,用空格分隔,表示KiKi想得到的元素的位置。
+//(1≤x≤n≤10，1≤y≤m≤10)
+//输出描述:
+//一行,输出一个整数值,为KiKi想知道的值。
+//示例1
+//输入:
+//2 3
+//1 2 3
+//4 5 6
+//1 2
+//输出:
+//2
+//#include<stdio.h>
+//#define ROW 100
+//#define COL 100
+//void find(int arr[ROW][COL], int a, int b)
+//{
+//	printf("%d\n", arr[a - 1][b - 1]);
+//}
+//
+//int main()
+//{
+//	int num1 = 0;
+//	int num2 = 0;
+//	scanf("%d %d", &num1, &num2);
+//	int arr[ROW][COL];
+//	int i = 0;
+//	int num = 0;
+//	for (i = 0;i < num1;i++)
+//	{
+//		int j = 0;
+//		for (j = 0;j < num2;j++)
+//		{
+//			scanf("%d", &num);
+//			arr[i][j] = num;
+//		}
+//	}
+//	int a = 0;
+//	int b = 0;
+//	scanf("%d %d", &a, &b);
+//	find(arr, a, b);
+//	return 0;
+//}
+
+
+//第130题
+//描述
+//KiKi想从n行m列的方阵队列中找到身高最高的人的位置,请你帮助他完成这个任务
+//输入描述:
+//第一行包含两个整数n和m,表示这个方阵队列包含n行m列。
+//从2到n+1行,每行输入m个整数(范围-231~231-1),用空格分隔
+//共输入n*m个数,表示方阵中的所有人的身高(保证输入身高都不相同)。
+//(1≤x≤n≤10，1≤y≤m≤10)
+//输出描述:
+//一行,输出两个整数,用空格分隔,表示方阵中身高最高的人所在的行号和列号。
+//示例1
+//输入:
+//2 2
+//175 180
+//176 185
+//输出:
+//2 2
+//#include<stdio.h>
+//#define ROW 100
+//#define COL 100
+//#define INF 1000000000
+//void compare(int arr[ROW][COL], int num1, int num2)
+//{
+//	int max = -INF;
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0;i < num1;i++)
+//	{
+//		for (j = 0;j < num2;j++)
+//		{
+//			if (max < arr[i][j])
+//			{
+//				max = arr[i][j];
+//			}
+//		}
+//	}
+//	for (i = 0;i < num1;i++)
+//	{
+//		for (j = 0;j < num2;j++)
+//		{
+//			if (max == arr[i][j])
+//			{
+//				printf("%d %d", i + 1, j + 1);
+//				break;
+//			}
+//		}
+//	}
+//}
+//int main()
+//{
+//	int num1 = 0;
+//	int num2 = 0;
+//	scanf("%d %d", &num1, &num2);
+//	int i = 0;
+//	int num = 0;
+//	int arr[ROW][COL];
+//	for (i = 0;i < num1;i++)
+//	{
+//		int j = 0;
+//		for (j = 0;j < num2;j++)
+//		{
+//			scanf("%d", &num);
+//			arr[i][j] = num;
+//		}
+//	}
+//	compare(arr, num1, num2);
+//}
+
+
+//第131题
+//描述
+//KiKi得到了两个n行m列的矩阵,他想知道两个矩阵是否相等,请你回答他。
+//(当两个矩阵对应数组元素都相等时两个矩阵相等)。
+//输入描述:
+//第一行包含两个整数n和m,表示两个矩阵包含n行m列,用空格分隔。
+//从2到n+1行,每行输入m个整数(范围-231~231-1)
+//用空格分隔,共输入n*m个数,表示第一个矩阵中的元素。
+//从n+2行到2n+1,每行输入m个整数(范围-231~231-1)
+//用空格分隔,共输入n*m个数,表示第二个矩阵中的元素。
+//1<n,m<10
+//输出描述:
+//一行,如果两个矩阵相等输出"Yes"并换行,否则输出"No"并换行。
+//示例1
+//输入:
+//2 2
+//1 2
+//3 4
+//1 2
+//3 4
+//输出:
+//Yes
+//#include<stdio.h>
+//#define ROW 100
+//#define COL 100
+//void compare(int arr1[ROW][COL], int arr2[ROW][COL], int num1, int num2)
+//{
+//	int flag = 0;
+//	int i = 0;
+//	for (i = 0;i < num1;i++)
+//	{
+//		int j = 0;
+//		for (j = 0;j < num2;j++)
+//		{
+//			if (arr1[i][j] != arr2[i][j])
+//			{
+//				flag = 1;
+//				break;
+//			}
+//		}
+//	}
+//	if (flag == 1)
+//	{
+//		printf("No\n");
+//	}
+//	else
+//	{
+//		printf("Yes\n");
+//	}
+//}
+//int main()
+//{
+//	int num1 = 0;
+//	int num2 = 0;
+//	scanf("%d %d", &num1, &num2);
+//	int i = 0;
+//	int num = 0;
+//	int arr1[ROW][COL];
+//	int arr2[ROW][COL];
+//	int j = 0;
+//	for (i = 0;i < num1;i++)
+//	{
+//		for (j = 0;j < num2;j++)
+//		{
+//			scanf("%d", &num);
+//			arr1[i][j] = num;
+//		}
+//	}
+//	for (i = 0;i < num1;i++)
+//	{
+//		for (j = 0;j < num2;j++)
+//		{
+//			scanf("%d", &num);
+//			arr2[i][j] = num;
+//		}
+//	}
+//	compare(arr1, arr2, num1, num2);
+//}
+
+
+//第132题
+//描述
+//输入NxM矩阵,矩阵元素均为整数,计算其中大于零的元素之和。
+//输入描述:
+//第一行为N M(N:矩阵行数;M:矩阵列数,且M,N<=10),接下来的N行为矩阵各行。
+//输出描述:
+//一行,其中大于零的元素之和。
+//示例1
+//输入:
+//3 3
+//2 3 4
+//- 5 - 9 - 7
+//0 8 - 4
+//输出:
+//17
+//#include<stdio.h>
+//#define ROW 100
+//#define COL 100
+//void SUM(int arr[ROW][COL], int num1, int num2)
+//{
+//	int i = 0;
+//	int j = 0;
+//	int sum = 0;
+//	for (i = 0;i < num1;i++)
+//	{
+//		for (j = 0;j < num2;j++)
+//		{
+//			if (arr[i][j] > 0)
+//			{
+//				sum += arr[i][j];
+//			}
+//		}
+//	}
+//	printf("%d\n", sum);
+//}
+//int main()
+//{
+//	int arr[ROW][COL];
+//	int i = 0;
+//	int num1 = 0;
+//	int num2 = 0;
+//	int num = 0;
+//	scanf("%d %d", &num1, &num2);
+//	for (i = 0;i < num1;i++)
+//	{
+//		int j = 0;
+//		for (j = 0;j < num2;j++)
+//		{
+//			scanf("%d", &num);
+//			arr[i][j] = num;
+//		}
+//	}
+//	SUM(arr, num1, num2);
+//}
+
+
+#include<stdio.h>
+#define ROW 4
+#define COL 4
+void back(int num)
+{
+	int i = 0;
+	int j = 0;
+	int arr[ROW][COL];
+	int num1 = 1;
+	int flag = 0;
+	int count = 0;
+	int temp = 0;
+	if (num % 2 == 0)
+	{
+		temp = num / 2;
+	}
+	else
+	{
+		temp = num / 2 + 1;
+	}
+	for (i = 0;i < temp;i++)
+	{
+		while (i == count && j < num)
+		{
+			arr[i][j++] = num1++;
+		}
+		while (j == num - count && i < num)
+		{
+			if (flag == 0)
+			{
+				j = j - 1;
+				flag = 1;
+			}
+			arr[++i][j] = num1++;
+		}
+		while (i == num - 1 && j > 0)
+		{
+			if (flag == 1)
+			{
+				i = i - 1;
+				flag = 0;
+			}
+			arr[i][--j] = num1++;
+		}
+		while (j == count && i >= 1)
+		{
+			if (flag == 0)
+			{
+				j = j + 1;
+				flag = 0;
+			}
+			arr[--i][j] = num1++;
+		}
+		count++;
+	}
+	for (i = 0;i < num;i++)
+	{
+		for (j = 0;j < num;j++)
+		{
+			printf("%d ", arr[i][j]);
+		}
+		printf("\n");
+	}
+}
+int main()
+{
+	int i = 0;
+	int num = 0;
+	scanf("%d", &num);
+	back(num);
+}
