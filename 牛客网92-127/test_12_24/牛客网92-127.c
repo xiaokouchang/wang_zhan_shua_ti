@@ -2116,74 +2116,148 @@
 //}
 
 
+//描述
+//给你一个整数n，按要求输出n∗n的回型矩阵
+//输入描述:
+//输入一行,包含一个整数n
+//1<=n<=19
+//输出描述:
+//输出n行,每行包含n个正整数
+//示例1
+//输入:
+//4
+//输出:
+//1  2  3  4
+//12 13 14 5
+//11 16 15 6
+//10 9  8  7
+//#include<stdio.h>
+//#define ROW 100
+//#define COL 100
+//void back(int num)
+//{
+//	int i = 0;
+//	int j = -1;
+//	int k = 0;
+//	int arr[ROW][COL];
+//	int num1 = 1;
+//	int count = 1;
+//	int temp = 0;
+//	if (num % 2 == 0)
+//	{
+//		temp = num / 2;
+//	}
+//	else
+//	{
+//		temp = num / 2 + 1;
+//	}
+//	for (k = 0;k < temp;k++)
+//	{
+//		while (j < num - count && num1 <= num * num)
+//		{
+//			arr[i][++j] = num1++;
+//		}
+//		while (i < num - count && num1 <= num * num)
+//		{
+//			arr[++i][j] = num1++;
+//		}
+//		while (j > count - 1 && num1 <= num * num)
+//		{
+//			arr[i][--j] = num1++;
+//		}
+//		while (i != count && num1 <= num * num)
+//		{
+//			arr[--i][j] = num1++;
+//		}
+//		count++;
+//	}
+//	for (i = 0;i < num;i++)
+//	{
+//		for (j = 0;j < num;j++)
+//		{
+//			printf("%3d ", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+//int main()
+//{
+//	int i = 0;
+//	int num = 0;
+//	scanf("%d", &num);
+//	back(num);
+//}
+
+
 #include<stdio.h>
-#define ROW 4
-#define COL 4
-void back(int num)
+#include<math.h>
+#define ROW 100
+#define COL 100
+void snake(int num)
 {
+	int arr[ROW][COL];
 	int i = 0;
 	int j = 0;
-	int arr[ROW][COL];
+	int k = 0;
 	int num1 = 1;
 	int flag = 0;
-	int count = 0;
-	int temp = 0;
-	if (num % 2 == 0)
+	int count1 = 2;
+	int count2 = 1;
+	while (num1 <= num * num)
 	{
-		temp = num / 2;
-	}
-	else
-	{
-		temp = num / 2 + 1;
-	}
-	for (i = 0;i < temp;i++)
-	{
-		while (i == count && j < num)
+		//蛇头
+		arr[0][0] = 0;
+		//上三角除两条对角线和蛇头的部分
+		while (count1 < num)
 		{
-			arr[i][j++] = num1++;
-		}
-		while (j == num - count && i < num)
-		{
-			if (flag == 0)
+			for (k = 0;k < count1;k++)
 			{
-				j = j - 1;
-				flag = 1;
+				if (i = j && flag == 0)
+				{
+					j++;
+					flag = 1;
+					arr[i][j] = num++;
+				}
+				else if (i < j)
+				{
+					j--;
+					i++;
+					arr[i][j] = num++;
+				}
+				else if (i > j)
+				{
+
+					arr[i][j] = num++;
+				}
 			}
-			arr[++i][j] = num1++;
+			count1++;
 		}
-		while (i == num - 1 && j > 0)
+		//对角线
+		for (i = 0;i < num;i++)
 		{
-			if (flag == 1)
+			for (j = 0;j < num;j++)
 			{
-				i = i - 1;
-				flag = 0;
+				if (i == j)
+				{
+					arr[i][j] = ;
+				}
 			}
-			arr[i][--j] = num1++;
 		}
-		while (j == count && i >= 1)
+		while (count > 0)
 		{
-			if (flag == 0)
+			for (i = 0;i < count;i++)
 			{
-				j = j + 1;
-				flag = 0;
+
 			}
-			arr[--i][j] = num1++;
+			count--;
 		}
-		count++;
-	}
-	for (i = 0;i < num;i++)
-	{
-		for (j = 0;j < num;j++)
-		{
-			printf("%d ", arr[i][j]);
-		}
-		printf("\n");
+		arr[num - 1][num - 1] = num * num;
 	}
 }
 int main()
 {
-	int i = 0;
 	int num = 0;
 	scanf("%d", &num);
-	back(num);
+	snake(num);
+	return 0;
 }
