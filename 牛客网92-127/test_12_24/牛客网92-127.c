@@ -2200,58 +2200,125 @@ void snake(int num)
 	int j = 0;
 	int k = 0;
 	int num1 = 1;
-	int flag = 0;
-	int count1 = 2;
-	int count2 = 1;
-	while (num1 <= num * num)
+	int flag1 = 0;
+	int flag2 = 0;
+	int flag3 = 0;
+	int count1 = 0;
+	int count2 = num - 2;
+	count1 = num / 2;
+	//蛇头
+	arr[0][0] = num1++;
+	//上三角
+	while(count2 >= count1)
 	{
-		//蛇头
-		arr[0][0] = 0;
-		//上三角除两条对角线和蛇头的部分
-		while (count1 < num)
+		for (k = 0;k < count1;k++)
 		{
-			for (k = 0;k < count1;k++)
+			if (i == j && flag2 == 0)
 			{
-				if (i = j && flag == 0)
-				{
-					j++;
-					flag = 1;
-					arr[i][j] = num++;
-				}
-				else if (i < j)
-				{
-					j--;
-					i++;
-					arr[i][j] = num++;
-				}
-				else if (i > j)
-				{
-
-					arr[i][j] = num++;
-				}
+				flag2 = 1;
+				j++;
+				arr[i][j] = num1++;
 			}
-			count1++;
+			else if (i == j && flag2 == 1)
+			{
+				j++;
+				i--;
+				arr[i][j] = num1++;
+			}
+			else if (i < j && flag3 == 0)
+			{
+				j--;
+				i++;
+				flag3 = 1;
+				arr[i][j] = num1++;
+			}
+			else if (i < j && flag3 == 1)
+			{
+				j++;
+				flag3 = 0;
+				arr[i][j] = num1++;
+			}
+			else if (i > j && flag1 == 0)
+			{
+				i++;
+				flag1 = 1;
+				arr[i][j] = num1++;
+			}
+			else if (i > j && flag1 == 1)
+			{
+				i--;
+				j++;
+				flag1 = 0;
+				arr[i][j] = num1++;
+			}
 		}
-		//对角线
-		for (i = 0;i < num;i++)
+		count1++;
+	}
+	//对角线
+	arr[i][++j] = num1++;
+	for (i = 1;i < num;i++)
+	{
+		j--;
+		arr[i][j] = num1++;
+	}
+	flag1 = 1;
+	flag2 = 1;
+	flag3 = 1;
+	count1 = 3;
+	i--;
+	while (count1 > 1)
+	{
+		for (k = 0;k < count1;k++)
 		{
-			for (j = 0;j < num;j++)
+			if (i == j && flag2 == 0)
 			{
-				if (i == j)
-				{
-					arr[i][j] = ;
-				}
+				flag2 = 1;
+				j++;
+				arr[i][j] = num1++;
+			}
+			else if (i == j && flag2 == 1)
+			{
+				j++;
+				i--;
+				arr[i][j] = num1++;
+			}
+			else if (i < j && flag3 == 1)
+			{
+				i++;
+				flag3 = 0;
+				arr[i][j] = num1++;
+			}
+			else if (i < j && flag3 == 0)
+			{
+				i++;
+				j--;
+				flag3 = 1;
+				arr[i][j] = num1++;
+			}
+			else if (i > j && flag1 == 1)
+			{
+				j++;
+				flag1 = 0;
+				arr[i][j] = num1++;
+			}
+			else if (i > j && flag1 == 0)
+			{
+				i--;
+				j++;
+				flag1 = 0;
+				arr[i][j] = num1++;
 			}
 		}
-		while (count > 0)
+		count1--;
+	}
+	arr[num - 1][num - 1] = num * num;
+	for (i = 0;i < num;i++)
+	{
+		for (j = 0;j < num;j++)
 		{
-			for (i = 0;i < count;i++)
-			{
-
-			}
-			count--;
+			printf("%2d ", arr[i][j]);
 		}
-		arr[num - 1][num - 1] = num * num;
+		printf("\n");
 	}
 }
 int main()
