@@ -2190,7 +2190,6 @@
 
 
 #include<stdio.h>
-#include<math.h>
 #define ROW 100
 #define COL 100
 void snake(int num)
@@ -2203,13 +2202,13 @@ void snake(int num)
 	int flag1 = 0;
 	int flag2 = 0;
 	int flag3 = 0;
-	int count1 = 0;
+	int flag4 = 0;
+	int count1 = 2;
 	int count2 = num - 2;
-	count1 = num / 2;
 	//蛇头
 	arr[0][0] = num1++;
 	//上三角
-	while(count2 >= count1)
+	while(count1 < num)
 	{
 		for (k = 0;k < count1;k++)
 		{
@@ -2255,17 +2254,32 @@ void snake(int num)
 		count1++;
 	}
 	//对角线
-	arr[i][++j] = num1++;
-	for (i = 1;i < num;i++)
+	if (i > j && flag1 == 0)
 	{
-		j--;
+		flag4 = 1;
+		i++;
 		arr[i][j] = num1++;
 	}
-	flag1 = 1;
-	flag2 = 1;
-	flag3 = 1;
-	count1 = 3;
-	i--;
+	else
+	{
+		arr[i][++j] = num1++;
+	}
+	for (k = 1;k < num;k++)
+	{
+		if (flag4 == 0)
+		{
+			i++;
+			j--;
+			arr[i][j] = num1++;
+		}
+		if(flag4 == 1)
+		{
+			i--;
+			j++;
+			arr[i][j] = num1++;
+		}
+	}
+	count1--;
 	while (count1 > 1)
 	{
 		for (k = 0;k < count1;k++)
@@ -2295,13 +2309,13 @@ void snake(int num)
 				flag3 = 1;
 				arr[i][j] = num1++;
 			}
-			else if (i > j && flag1 == 1)
+			else if (i > j && flag1 == 0)
 			{
 				j++;
-				flag1 = 0;
+				flag1 = 1;
 				arr[i][j] = num1++;
 			}
-			else if (i > j && flag1 == 0)
+			else if (i > j && flag1 == 1)
 			{
 				i--;
 				j++;
