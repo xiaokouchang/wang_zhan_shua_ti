@@ -2116,6 +2116,7 @@
 //}
 
 
+//第133题
 //描述
 //给你一个整数n，按要求输出n∗n的回型矩阵
 //输入描述:
@@ -2189,156 +2190,98 @@
 //}
 
 
-#include<stdio.h>
-#define ROW 100
-#define COL 100
-void snake(int num)
-{
-	int arr[ROW][COL];
-	int i = 0;
-	int j = 0;
-	int k = 0;
-	int num1 = 1;
-	int flag1 = 0;
-	int flag2 = 0;
-	int flag3 = 0;
-	int flag4 = 0;
-	int count1 = 2;
-	int count2 = num - 2;
-	//蛇头
-	arr[0][0] = num1++;
-	//上三角
-	while(count1 < num)
-	{
-		for (k = 0;k < count1;k++)
-		{
-			if (i == j && flag2 == 0)
-			{
-				flag2 = 1;
-				j++;
-				arr[i][j] = num1++;
-			}
-			else if (i == j && flag2 == 1)
-			{
-				j++;
-				i--;
-				arr[i][j] = num1++;
-			}
-			else if (i < j && flag3 == 0)
-			{
-				j--;
-				i++;
-				flag3 = 1;
-				arr[i][j] = num1++;
-			}
-			else if (i < j && flag3 == 1)
-			{
-				j++;
-				flag3 = 0;
-				arr[i][j] = num1++;
-			}
-			else if (i > j && flag1 == 0)
-			{
-				i++;
-				flag1 = 1;
-				arr[i][j] = num1++;
-			}
-			else if (i > j && flag1 == 1)
-			{
-				i--;
-				j++;
-				flag1 = 0;
-				arr[i][j] = num1++;
-			}
-		}
-		count1++;
-	}
-	//对角线
-	if (i > j && flag1 == 0)
-	{
-		flag4 = 1;
-		i++;
-		arr[i][j] = num1++;
-	}
-	else
-	{
-		arr[i][++j] = num1++;
-	}
-	for (k = 1;k < num;k++)
-	{
-		if (flag4 == 0)
-		{
-			i++;
-			j--;
-			arr[i][j] = num1++;
-		}
-		if(flag4 == 1)
-		{
-			i--;
-			j++;
-			arr[i][j] = num1++;
-		}
-	}
-	count1--;
-	while (count1 > 1)
-	{
-		for (k = 0;k < count1;k++)
-		{
-			if (i == j && flag2 == 0)
-			{
-				flag2 = 1;
-				j++;
-				arr[i][j] = num1++;
-			}
-			else if (i == j && flag2 == 1)
-			{
-				j++;
-				i--;
-				arr[i][j] = num1++;
-			}
-			else if (i < j && flag3 == 1)
-			{
-				i++;
-				flag3 = 0;
-				arr[i][j] = num1++;
-			}
-			else if (i < j && flag3 == 0)
-			{
-				i++;
-				j--;
-				flag3 = 1;
-				arr[i][j] = num1++;
-			}
-			else if (i > j && flag1 == 0)
-			{
-				j++;
-				flag1 = 1;
-				arr[i][j] = num1++;
-			}
-			else if (i > j && flag1 == 1)
-			{
-				i--;
-				j++;
-				flag1 = 0;
-				arr[i][j] = num1++;
-			}
-		}
-		count1--;
-	}
-	arr[num - 1][num - 1] = num * num;
-	for (i = 0;i < num;i++)
-	{
-		for (j = 0;j < num;j++)
-		{
-			printf("%2d ", arr[i][j]);
-		}
-		printf("\n");
-	}
-}
-int main()
-{
-	int num = 0;
-	scanf("%d", &num);
-	snake(num);
-	return 0;
-}
+//第134题
+//描述
+//给你一个整数n,输出n∗n的蛇形矩阵。
+//输入描述:
+//输入一行,包含一个整数n
+//输出描述:
+//输出n行,每行包含n个正整数,通过空格分隔。1<=n<=1000
+//示例1
+//输入:
+//4
+//输出:
+//1 2 6 7
+//3 5 8 13
+//4 9 12 14
+//10 11 15 16
+//#include<stdio.h>
+//#define ROW 100
+//#define COL 100
+//void snake(int num)
+//{
+//	int arr[ROW][COL];
+//	int i = 0;
+//	int j = 0;
+//	int num1 = 1;
+//	int derection = 0;
+//	//二维矩阵为0
+//	for (i = 0;i < num;i++)
+//	{
+//		for (j = 0;j < num;j++)
+//		{
+//			arr[i][j] = 0;
+//		}
+//	}
+//	i = 0;
+//	j = 0;
+//	while (num1 <= num * num)
+//	{
+//		arr[i][j] = num1++;
+//		//右上方向
+//		if (derection == 0)
+//		{
+//			if (i == 0 && j < num - 1)
+//			{
+//				j++;//到达上边界,右移
+//				derection = 1;
+//			}
+//			else if (j == num - 1)
+//			{
+//				i++;//到达右边界,下移
+//				derection = 1;
+//			}
+//			else
+//			{
+//				i--;
+//				j++;
+//			}
+//		}
+//		//左下方向
+//		else
+//		{
+//			if (j == 0 && i < num - 1)
+//			{
+//				i++;//到达左边界,下移
+//				derection = 0;
+//			}
+//			else if (i == num - 1)
+//			{
+//				j++;//到达下边界,右移
+//				derection = 0;
+//			}
+//			else
+//			{
+//				i++;
+//				j--;
+//			}
+//		}
+//	}
+//	for (i = 0;i < num;i++)
+//	{
+//		for (j = 0;j < num;j++)
+//		{
+//			printf("%2d ", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+//int main()
+//{
+//	int num = 0;
+//	scanf("%d", &num);
+//	snake(num);
+//	return 0;
+//}
+
+
