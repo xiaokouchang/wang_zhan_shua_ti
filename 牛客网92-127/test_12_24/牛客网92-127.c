@@ -2607,3 +2607,520 @@
 //}
 
 
+//#include<stdio.h>
+//#define ROW 100
+//#define COL 100
+//void change(int arr1[ROW][COL], int a, int b, int c, char d, int f)
+//{
+//	int i = 0;
+//	int j = 0;
+//	int arr2[ROW][COL];
+//	for (i = 0;i < a;i++)
+//	{
+//		for (j = 0;j < b;j++)
+//		{
+//			arr2[i][j] = 0;
+//		}
+//	}
+//	int m = 0;
+//	int n = 0;
+//	int derection = 0;
+//	while (c > 0)
+//	{
+//		for (i = 0;i < a;i++)
+//		{
+//			for (j = 0;j < b;j++)
+//			{
+//				if (d == 'r')
+//				{
+//					if (derection == 0)
+//					{
+//						if (f > 0)
+//						{
+//							m = --f;
+//							if (m >= a)
+//							{
+//								m = a - 1;
+//							}
+//						}
+//						derection = 1;
+//					}
+//					else
+//					{
+//						n++;
+//						if (n == b)
+//						{
+//							if (f > 0)
+//							{
+//								m = --f;
+//								if (m >= a)
+//								{
+//									m = a - 1;
+//								}
+//							}
+//							n = 0;
+//							derection = 0;
+//						}
+//					}
+//					arr2[i][j] = arr1[m][n];
+//				}
+//				if (d == 'c')
+//				{
+//					if (derection == 0)
+//					{
+//						if (f > 0)
+//						{
+//							n = --f;
+//							if (n >= b)
+//							{
+//								n = b - 1;
+//							}
+//						}
+//						derection = 1;
+//					}
+//					else
+//					{
+//						m++;
+//						if (a == m)
+//						{
+//							if (f > 0)
+//							{
+//								n = --f;
+//								if (n >= b)
+//								{
+//									n = b - 1;
+//								}
+//							}
+//							m = 0;
+//							derection = 0;
+//						}
+//					}
+//					arr2[i][j] = arr1[m][n];
+//				}
+//			}
+//		}
+//		for (i = 0;i < a;i++)
+//		{
+//			for (j = 0;j < b;j++)
+//			{
+//				arr1[i][j] = arr2[i][j];
+//			}
+//		}
+//		c--;
+//	}
+//	for (i = 0;i < a;i++)
+//	{
+//		for (j = 0;j < b;j++)
+//		{
+//			printf("%d ", arr2[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	scanf("%d %d", &a, &b);
+//	int arr1[ROW][COL];
+//
+//	int i = 0;
+//	int num = 0;
+//	for (i = 0;i < a;i++)
+//	{
+//		int j = 0;
+//		for (j = 0;j < b;j++)
+//		{
+//			scanf("%d", &num);
+//			arr1[i][j] = num;
+//		}
+//	}
+//	int c = 0;
+//	scanf("%d", &c);
+//	char d;
+//	int f = 0;
+//	while (getchar() != '\n');
+//	for (i = 0;i < c;i++)
+//	{
+//		scanf("%c %*d %d", &d, &f);
+//	}
+//	change(arr1, a, b, c, d, f);
+//}
+
+
+//#include<stdio.h>
+//#define ROW 100
+//#define COL 100
+//void change(int arr1[ROW][COL], int a, int b, int c, char d, int f)
+//{
+//	int i = 0;
+//	int j = 0;
+//	int arr2[ROW][COL];
+//	for (i = 0;i < a;i++)
+//	{
+//		for (j = 0;j < b;j++)
+//		{
+//			arr2[i][j] = 0;
+//		}
+//	}
+//	int m = 0;
+//	int n = 0;
+//	int derection = 0;
+//	while (c > 0)
+//	{
+//		for (i = 0;i < a;i++)
+//		{
+//			for (j = 0;j < b;j++)
+//			{
+//				if (d == 'r')
+//				{
+//					if (derection == 0)
+//					{
+//						if (f > 0)
+//						{
+//							m = --f;
+//						}
+//						derection = 1;
+//					}
+//					else
+//					{
+//						n++;
+//					}
+//					arr2[i][j] = arr1[m][n];
+//					if (n == b - 1)
+//					{
+//						n = 0;
+//						derection = 0;
+//					}
+//				}
+//				if (d == 'c')
+//				{
+//					if (derection == 0)
+//					{
+//						n = --f;
+//						derection = 1;
+//					}
+//					else
+//					{
+//						n--;
+//					}
+//					arr2[i][j] = arr1[m][n];
+//					if (m == 0)
+//					{
+//						m = a - 1;
+//						derection = 0;
+//					}
+//				}
+//			}
+//		}
+//		for (i = 0;i < a;i++)
+//		{
+//			for (j = 0;j < b;j++)
+//			{
+//				arr1[i][j] = arr2[i][j];
+//			}
+//		}
+//		c--;
+//	}
+//	for (i = 0;i < a;i++)
+//	{
+//		for (j = 0;j < b;j++)
+//		{
+//			printf("%d ", arr2[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	scanf("%d %d", &a, &b);
+//	int arr1[ROW][COL];
+//
+//	int i = 0;
+//	int num = 0;
+//	for (i = 0;i < a;i++)
+//	{
+//		int j = 0;
+//		for (j = 0;j < b;j++)
+//		{
+//			scanf("%d", &num);
+//			arr1[i][j] = num;
+//		}
+//	}
+//	int c = 0;
+//	scanf("%d", &c);
+//	char d;
+//	int f = 0;
+//	while (getchar() != '\n');
+//	for (i = 0;i < c;i++)
+//	{
+//		scanf("%c %*d %d", &d, &f);
+//	}
+//	change(arr1, a, b, c, d, f);
+//}
+
+//#include <stdio.h>
+//#include <string.h>
+//
+//#define ROW 100
+//#define COL 100
+//
+//void change(int arr1[ROW][COL], int a, int b, int c, char d, int f) {
+//    int arr2[ROW][COL];
+//    // 初始化 arr2 数组为 0
+//    memset(arr2, 0, sizeof(arr2));
+//
+//    while (c > 0) {
+//        int m = 0, n = 0;
+//        int direction = 0;
+//        for (int i = 0; i < a; i++) {
+//            for (int j = 0; j < b; j++) {
+//                if (d == 'r') {
+//                    if (direction == 0) {
+//                        if (f > 0) {
+//                            m = --f;
+//                            if (m >= a) {
+//                                m = a - 1; // 防止越界
+//                            }
+//                        }
+//                        direction = 1;
+//                    }
+//                    else {
+//                        n++;
+//                        if (n == b) {
+//                            if (f > 0) {
+//                                m = --f;
+//                                if (m >= a) {
+//                                    m = a - 1; // 防止越界
+//                                }
+//                            }
+//                            n = 0;
+//                            direction = 0;
+//                        }
+//                    }
+//                    arr2[i][j] = arr1[m][n];
+//                }
+//                else if (d == 'c') {
+//                    if (direction == 0) {
+//                        if (f > 0) {
+//                            n = --f;
+//                            if (n >= b) {
+//                                n = b - 1; // 防止越界
+//                            }
+//                        }
+//                        direction = 1;
+//                    }
+//                    else {
+//                        m++;
+//                        if (m == a) {
+//                            if (f > 0) {
+//                                n = --f;
+//                                if (n >= b) {
+//                                    n = b - 1; // 防止越界
+//                                }
+//                            }
+//                            m = 0;
+//                            direction = 0;
+//                        }
+//                    }
+//                    arr2[i][j] = arr1[m][n];
+//                }
+//            }
+//        }
+//        // 将 arr2 的结果复制回 arr1，以便进行下一次变换
+//        for (int i = 0; i < a; i++) {
+//            for (int j = 0; j < b; j++) {
+//                arr1[i][j] = arr2[i][j];
+//            }
+//        }
+//        c--;
+//    }
+//
+//    // 输出最终结果
+//    for (int i = 0; i < a; i++) {
+//        for (int j = 0; j < b; j++) {
+//            printf("%d ", arr2[i][j]);
+//        }
+//        printf("\n");
+//    }
+//}
+//
+//int main() {
+//    int a = 0, b = 0;
+//    if (scanf("%d %d", &a, &b) != 2) {
+//        printf("输入格式错误！\n");
+//        return 1;
+//    }
+//
+//    int arr1[ROW][COL];
+//    for (int i = 0; i < a; i++) {
+//        for (int j = 0; j < b; j++) {
+//            if (scanf("%d", &arr1[i][j]) != 1) {
+//                printf("输入格式错误！\n");
+//                return 1;
+//            }
+//        }
+//    }
+//
+//    int c = 0;
+//    if (scanf("%d", &c) != 1) {
+//        printf("输入格式错误！\n");
+//        return 1;
+//    }
+//
+//    char d;
+//    int f = 0;
+//    // 消耗掉输入缓冲区中的换行符
+//    while (getchar() != '\n');
+//    if (scanf("%c %*d %d", &d, &f) != 2) {
+//        printf("输入格式错误！\n");
+//        return 1;
+//    }
+//
+//    change(arr1, a, b, c, d, f);
+//
+//    return 0;
+//}
+
+
+//第140题
+//描述
+//KiKi知道什么叫杨辉三角之后对杨辉三角产生了浓厚的兴趣
+//他想知道杨辉三角的前n行,请编程帮他解答。
+//杨辉三角
+//本质上是二项式(a + b)的n次方展开后各项的系数排成的三角形。
+//其性质包括:每行的端点数为1,一个数也为1;每个数等于它左上方和上方的两数之和。
+//输入描述:
+//第一行包含一个整数数n。(1≤n≤30)
+//输出描述:
+//包含n行,为杨辉三角的前n行,每个数输出域宽为5。
+//示例1
+//输入:
+//6
+//输出:
+//1
+//1    1
+//1    2    1
+//1    3    3    1
+//1    4    6    4    1
+//1    5   10   10    5    1
+//#include<stdio.h>
+//#include<string.h>
+//#define ROW 100
+//#define COL 100
+//void triangle(int num)
+//{
+//	int arr[ROW][COL];
+//	memset(arr, 0, sizeof(arr));
+//	int i = 0;
+//	int count = 1;
+//	for (i = 0;i < 2;i++)
+//	{
+//		int j = 0;
+//		for (j = 0;j <= i;j++)
+//		{
+//			arr[i][j] = count;
+//		}
+//	}
+//	for (i = 2;i < num;i++)
+//	{
+//		int j = 0;
+//		for (j = 0;j <= i;j++)
+//		{
+//			if (j == 0 || j == i)
+//			{
+//				arr[i][j] = 1;
+//			}
+//			else
+//			{
+//				arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j];
+//			}
+//		}
+//	}
+//	for (i = 0;i < num;i++)
+//	{
+//		int j = 0;
+//		for (j = 0;j <= i;j++)
+//		{
+//			printf("%5d", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+//int main()
+//{
+//	int num = 0;
+//	scanf("%d", &num);
+//	triangle(num);
+//	return 0;
+//}
+
+
+
+#include<stdio.h>
+#define ROW 3
+#define COL 3
+int WIN(int arr[ROW][COL], int a, int b)
+{
+	int i = 0;
+	int flag = 0;
+	for (i = 0;i < a;i++)
+	{
+		if (arr[0][0] == 'K')
+		{
+			if (arr[i][0] == arr[i][1] && arr[i][1] == arr[i][2])
+			{
+				flag = 1;
+				return 1;
+			}
+			else if(arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2])
+			{
+				flag = 1;
+				return 1;
+			}
+			else if (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0])
+			{
+				flag = 1;
+				return 1;
+			}
+			else
+			{
+				flag = 1;
+				return 0;
+			}
+		}
+	}
+	if (flag == 0)
+	{
+		return 2;
+	}
+}
+int main()
+{
+	int arr[ROW][COL];
+	int i = 0;
+	for (i = 0;i < 3;i++)
+	{
+		int j = 0;
+		for (j = 0;j < 3;j++)
+		{
+			scanf("%d", &arr[i][j]);
+		}
+	}
+	int ret = WIN(arr, 3, 3);
+	if (ret == 1)
+	{
+		printf("KiKi wins!\n");
+	}
+	else if (ret == 0)
+	{
+		printf("BoBo wins!\n");
+	}
+	else
+	{
+		printf("No winner!\n");
+	}
+	return 0;
+}
