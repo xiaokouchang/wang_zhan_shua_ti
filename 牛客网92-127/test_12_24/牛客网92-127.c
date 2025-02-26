@@ -3058,69 +3058,80 @@
 //}
 
 
+//第141题
+//描述
+//KiKi和BoBo玩"井"字棋。
+//也就是在九宫格中,只要任意行、列
+//或者任意对角线上面出现三个连续相同的棋子,就能获胜。
+//请根据棋盘状态,判断当前输赢。
+//输入描述:
+//三行三列的字符元素,代表棋盘状态,字符元素用空格分开,代表当前棋盘,其中元素为K代表KiKi玩家的棋子，为O表示没有棋子，为B代表BoBo玩家的棋子。
+//输出描述:
+//如果KiKi获胜,输出"KiKi wins!"
+//如果BoBo获胜,输出"BoBo wins!"
+//如果没有获胜,输出"No winner!"。
+//示例1
+//输入:
+//K O B
+//O K B
+//B O K
+//输出:
+//KiKi wins!
+//#include<stdio.h>
+//#define ROW 3
+//#define COL 3
+//char WIN(char arr[ROW][COL], int a, int b)
+//{
+//	int i = 0;
+//	for (i = 0; i < a; i++)
+//	{
+//		if (arr[i][0] == arr[i][1] && arr[i][1] == arr[i][2] && arr[i][0] != ' ')
+//		{
+//			return arr[i][0];
+//		}
+//	}
+//	for (i = 0; i < a; i++)
+//	{
+//		if (arr[0][i] == arr[1][i] && arr[1][i] == arr[2][i] && arr[0][i] != ' ')
+//		{
+//			return arr[0][i];
+//		}
+//	}
+//	if (arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2] && arr[0][0] != ' ')
+//	{
+//		return arr[0][0];
+//	}
+//	if (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0] && arr[0][2] != ' ')
+//	{
+//		return arr[0][2];
+//	}
+//	return ' ';
+//}
+//int main()
+//{
+//	char arr[ROW][COL];
+//	int i = 0;
+//	for (i = 0;i < 3;i++)
+//	{
+//		int j = 0;
+//		for (j = 0;j < 3;j++)
+//		{
+//			scanf(" %c", &arr[i][j]);
+//		}
+//	}
+//	char ret = WIN(arr, 3, 3);
+//	if (ret == 'K')
+//	{
+//		printf("KiKi wins!\n");
+//	}
+//	else if (ret == 'B')
+//	{
+//		printf("BoBo wins!\n");
+//	}
+//	else
+//	{
+//		printf("No winner!\n");
+//	}
+//	return 0;
+//}
 
-#include<stdio.h>
-#define ROW 3
-#define COL 3
-int WIN(int arr[ROW][COL], int a, int b)
-{
-	int i = 0;
-	int flag = 0;
-	for (i = 0;i < a;i++)
-	{
-		if (arr[0][0] == 'K')
-		{
-			if (arr[i][0] == arr[i][1] && arr[i][1] == arr[i][2])
-			{
-				flag = 1;
-				return 1;
-			}
-			else if(arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2])
-			{
-				flag = 1;
-				return 1;
-			}
-			else if (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0])
-			{
-				flag = 1;
-				return 1;
-			}
-			else
-			{
-				flag = 1;
-				return 0;
-			}
-		}
-	}
-	if (flag == 0)
-	{
-		return 2;
-	}
-}
-int main()
-{
-	int arr[ROW][COL];
-	int i = 0;
-	for (i = 0;i < 3;i++)
-	{
-		int j = 0;
-		for (j = 0;j < 3;j++)
-		{
-			scanf("%d", &arr[i][j]);
-		}
-	}
-	int ret = WIN(arr, 3, 3);
-	if (ret == 1)
-	{
-		printf("KiKi wins!\n");
-	}
-	else if (ret == 0)
-	{
-		printf("BoBo wins!\n");
-	}
-	else
-	{
-		printf("No winner!\n");
-	}
-	return 0;
-}
